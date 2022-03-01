@@ -1,0 +1,10 @@
+*.pdf
+*.pyc
+*.html
+*.png
+*.jpg
+*.txt
+*.npy
+*.out
+*.args
+*.ipynb_checkpoints
