@@ -8,3 +8,4 @@
 *.out
 *.args
 *.ipynb_checkpoints
+.spyproject*
