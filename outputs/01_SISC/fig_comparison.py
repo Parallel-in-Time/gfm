@@ -30,10 +30,10 @@ params = [
          nodesType='EQUID',
          qType='LOBATTO')]
 
-algos = ['GaussSeidel', 'Jacobi', 'Parareal',
-         'STMG', 'PFASST', 'ATMG', 'TFASST']
-labels = ['ABGS', 'ABJ', 'Parareal-1',
-          'Parareal-2', 'PFASST', 'Parareal-3', 'TMG$_f$']
+algos = ['STMG', 'TFASST', 'Parareal', 'GaussSeidel', 'Jacobi',
+         'ATMG', 'PFASST', ]
+labels = ['Parareal-1 (TMG)', 'TMG$_f$', 'Parareal-2', 'ABGS', 'ABJ',
+          'Parareal-3 (TMG$_c$)', 'PFASST']
 symbols = ['p', 's', '>', 'o', '^', '+', '<']
 
 iFig = 1

@@ -31,7 +31,14 @@ for i, lam in enumerate(lams):
         M=1, method=fineMethod, nodes=nodesType, qType=qType,
         nStepPerNode=10)
     s.setPhiDelta(deltaMethod, nStepPerNode=5)
+
+    t, uExact = s.getU('Exact', times=True)
+    uDelta = s.getU('Delta')
     uFine = s.getU('Fine')
+    errFine = np.max(np.abs(uExact-uFine))
+    errCoarse = np.max(np.abs(uExact-uDelta))
+    print(f'ErrFine : {errFine:1.2e}')
+    print(f'ErrCoarse : {errCoarse:1.2e}')
 
     algo = 'Parareal'
     # Initialization
@@ -61,7 +68,14 @@ for i, lam in enumerate(lams):
         plt.ylim(1e-13, 10)
     if i == 2:
         plt.ylim(1e-2, 1e4)
+        textArgs = dict(
+            bbox=dict(boxstyle="round",
+                      ec=(0.5, 0.5, 0.5),
+                      fc=(0.8, 0.8, 0.8)))
+        plt.text(0, 0.02, 'Max. abs. err. fine: $8.35e^{-4}$', **textArgs)
     if i == 3:
         plt.ylim(1e-13, 10)
+    plt.hlines([errFine, errCoarse], 0, nIter,
+               colors='gray', linestyles='--', linewidth=1.5)
     setFig('Iteration', 'Error vs. fine solution',
            fileName=f'fig_Parareal_{i}.pdf')
