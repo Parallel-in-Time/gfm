@@ -46,10 +46,10 @@ and the University of Geneva
 </div>
 
 <p align="center">
-  <img src="./doku/logo_JSC.jpg" height="45"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./doku/tuhh-logo.png" height="45"/> &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./doku/logo_sec-math.png" height="60"/> &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./doku/LogoTime-X.png" height="65"/>
+  <img src="./doku/logo_JSC.jpg" height="55"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./doku/tuhh-logo.png" height="55"/> &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./doku/logo_sec-math.png" height="70"/> &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./doku/LogoTime-X.png" height="75"/>
 </p>
 
 <div style="text-align: justify">
@@ -59,8 +59,8 @@ This project also received funding from the German Federal Ministry of Education
 </div>
 
 <p align="center">
-  <img src="./doku/EuroHPC.jpg" height="100"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./doku/logo_eu.png" height="90" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./doku/BMBF_gefoerdert_2017_en.jpg" height="100" />
+  <img src="./doku/EuroHPC.jpg" height="105"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./doku/logo_eu.png" height="95" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./doku/BMBF_gefoerdert_2017_en.jpg" height="105" />
 </p>
 
