@@ -32,7 +32,7 @@ Scripts to reproduce the figures of a manuscript on the GFM method (in preparati
 
 Jupyter notebooks with example and tutorials on how to use the gfm library.
 
-### Collaborations and funding
+### Acknowledgements
 
 This repository results from a collaboration between Jülich Supercomputing Centre 
 ([Robert SPECK](https://www.fz-juelich.de/SharedDocs/Personen/IAS/JSC/EN/staff/speck_r.html)), 
@@ -49,9 +49,11 @@ as part of the [Time-X project](https://www.timex-eurohpc.eu/).
   <img src="./doku/LogoTime-X.png" height="75"/>
 </p>
 
-This project has received funding from the European High-Performance Computing Joint Undertaking (JU) under grant agreement No 955701.
+This project has received funding from the [European High-Performance Computing Joint Undertaking](https://eurohpc-ju.europa.eu/) (JU)
+under grant agreement No 955701 ([Time-X](https://www.timex-eurohpc.eu/)).
 The JU receives support from the European Union’s Horizon 2020 research and innovation programme and Belgium, France, Germany, and Switzerland.
-This project also received funding from the German Federal Ministry of Education and Research (BMBF) grant 16HPC048.
+This project also received funding from the 
+[German Federal Ministry of Education and Research](https://www.bmbf.de/bmbf/en/home/home_node.html) (BMBF) grant 16HPC048.
 
 <p align="center">
   <img src="./doku/EuroHPC.jpg" height="105"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
