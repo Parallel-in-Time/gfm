@@ -34,16 +34,13 @@ Jupyter notebooks with example and tutorials on how to use the gfm library.
 
 ### Collaborations and funding
 
-<div style="text-align: justify">
 This repository results from a collaboration between Jülich Supercomputing Centre 
-(<a href="https://www.fz-juelich.de/SharedDocs/Personen/IAS/JSC/EN/staff/speck_r.html">Robert SPECK</a>), 
+([Robert SPECK](https://www.fz-juelich.de/SharedDocs/Personen/IAS/JSC/EN/staff/speck_r.html)), 
 Hamburg University of Technology 
-(<a href="https://www.mat.tuhh.de/home/druprecht/?homepage_id=druprecht">Daniel RUPRECHT</a>,
- <a href="https://www.mat.tuhh.de/home/tlunet/?homepage_id=tlunet">Thibaut LUNET</a>) 
-and the University of Geneva 
-(<a href="https://www.unige.ch/~gander/">Martin J. GANDER</a>), as part of the 
-<a href="https://www.timex-eurohpc.eu/">Time-X project</a>. 
-</div>
+([Daniel RUÜRECHT](https://www.mat.tuhh.de/home/druprecht/?homepage_id=druprecht),
+[Thibaut LUNET](https://www.mat.tuhh.de/home/tlunet/?homepage_id=tlunet)) 
+and the University of Geneva ([Martin J. GANDER](https://www.unige.ch/~gander/)), 
+as part of the [Time-X project](https://www.timex-eurohpc.eu/). 
 
 <p align="center">
   <img src="./doku/logo_JSC.jpg" height="55"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,11 +49,9 @@ and the University of Geneva
   <img src="./doku/LogoTime-X.png" height="75"/>
 </p>
 
-<div style="text-align: justify">
 This project has received funding from the European High-Performance Computing Joint Undertaking (JU) under grant agreement No 955701.
 The JU receives support from the European Union’s Horizon 2020 research and innovation programme and Belgium, France, Germany, and Switzerland.
 This project also received funding from the German Federal Ministry of Education and Research (BMBF) grant 16HPC048.
-</div>
 
 <p align="center">
   <img src="./doku/EuroHPC.jpg" height="105"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
