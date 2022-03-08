@@ -32,7 +32,7 @@ Scripts to reproduce the figures of a manuscript on the GFM method (in preparati
 
 Jupyter notebooks with example and tutorials on how to use the gfm library.
 
-### Collaborations and fundings
+### Collaborations and funding
 
 <div style="text-align: justify">
 This repository results from a collaboration between Jülich Supercomputing Centre 
