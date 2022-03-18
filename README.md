@@ -12,32 +12,18 @@ don't hesitate to open an [issue](https://github.com/Parallel-in-Time/gfm/issues
 
 ### Repository structure
 
-#### [doku](./doku) 
-
-Markdown documentation pages.
-
-#### [gfm](./gfm)
-
-Python library for the gfm package.
-
-#### [notes](./notes)
-
-Jupyter notebooks with small numerical investigations on PinT methods using the gfm library.
-
-#### [outputs](./outputs)
-
-Scripts to reproduce the figures of a manuscript on the GFM method (in preparation)
-
-#### [tutorials](./tutorials)
-
-Jupyter notebooks with example and tutorials on how to use the gfm library.
+- [doku](./doku) : Markdown documentation pages.
+- [gfm](./gfm) : Python library for the gfm package.
+- [notes](./notes) : Jupyter notebooks with small numerical investigations on PinT methods using the gfm library.
+- [outputs](./outputs) : scripts to reproduce the figures of a manuscript on the GFM method (in preparation).
+- [tutorials](./tutorials) : Jupyter notebooks with example and tutorials on how to use the gfm library.
 
 ### Acknowledgements
 
 This repository results from a collaboration between Jülich Supercomputing Centre 
 ([Robert SPECK](https://www.fz-juelich.de/SharedDocs/Personen/IAS/JSC/EN/staff/speck_r.html)), 
 Hamburg University of Technology 
-([Daniel RUÜRECHT](https://www.mat.tuhh.de/home/druprecht/?homepage_id=druprecht),
+([Daniel RUPRECHT](https://www.mat.tuhh.de/home/druprecht/?homepage_id=druprecht),
 [Thibaut LUNET](https://www.mat.tuhh.de/home/tlunet/?homepage_id=tlunet)) 
 and the University of Geneva ([Martin J. GANDER](https://www.unige.ch/~gander/)), 
 as part of the [Time-X project](https://www.timex-eurohpc.eu/). 
