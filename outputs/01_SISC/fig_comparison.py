@@ -17,7 +17,6 @@ M = 5
 MCoarse = 3
 
 nIter = 20
-iApprox=True
 initType='RAND'
 
 params = [
@@ -30,10 +29,10 @@ params = [
          nodesType='EQUID',
          qType='LOBATTO')]
 
-algos = ['STMG', 'TFASST', 'Parareal', 'GaussSeidel', 'Jacobi',
-         'ATMG', 'PFASST', ]
-labels = ['Parareal-1 (TMG)', 'TMG$_f$', 'Parareal-2', 'ABGS', 'ABJ',
-          'Parareal-3 (TMG$_c$)', 'PFASST']
+algos = ['Jacobi', 'GaussSeidel', 'Parareal',
+         'STMG', 'ATMG', 'TFASST', 'PFASST']
+labels = ['ABJ', 'ABGS', 'Parareal',
+          'TMG ($\\omega=1$)', 'TMG$_c$', 'TMG$_f$', 'PFASST']
 symbols = ['p', 's', '>', 'o', '^', '+', '<']
 
 iFig = 1

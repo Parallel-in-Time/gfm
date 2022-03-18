@@ -64,18 +64,18 @@ for i, lam in enumerate(lams):
     plt.semilogy(delta*gfmBnd[i], 'o-', label='New bound')
     if i < 2:
         plt.semilogy([delta*gamma**k for k in range(nIter+1)], ':',
-                     label='Norm of iteration matrix')
+                      label='Norm of iteration matrix')
         plt.ylim(1e-13, 10)
     if i == 2:
         plt.ylim(1e-2, 1e4)
-        textArgs = dict(
-            bbox=dict(boxstyle="round",
-                      ec=(0.5, 0.5, 0.5),
-                      fc=(0.8, 0.8, 0.8)))
-        plt.text(0, 0.02, 'Max. abs. err. fine: $8.35e^{-4}$', **textArgs)
+        # textArgs = dict(
+        #     bbox=dict(boxstyle="round",
+        #               ec=(0.5, 0.5, 0.5),
+        #               fc=(0.8, 0.8, 0.8)))
+        # plt.text(0, 0.02, 'Max. abs. err. fine: $8.35e^{-4}$', **textArgs)
     if i == 3:
         plt.ylim(1e-13, 10)
-    plt.hlines([errFine, errCoarse], 0, nIter,
-               colors='gray', linestyles='--', linewidth=1.5)
+    # plt.hlines([errFine, errCoarse], 0, nIter,
+    #            colors='gray', linestyles='--', linewidth=1.5)
     setFig('Iteration', 'Error vs. fine solution',
            fileName=f'fig_Parareal_{i}.pdf')

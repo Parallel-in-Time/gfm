@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from gfm.base import GFMSolver
 from gfm.util import setFig, getLastPlotCol
 
-s = GFMSolver(lam=1j, u0=1, dt=0.1*np.pi, L=10)
+s = GFMSolver(lam=1j, u0=1, dt=0.01*np.pi, L=100)
 
 fineMethod = 'COLLOCATION'
 deltaMethod = 'BE'
@@ -19,8 +19,7 @@ nodesType = 'LEGENDRE'
 qType = 'LOBATTO'
 iType = 'RAND'
 
-s.setFineLevel(M=10, method=fineMethod,
-    nodes=nodesType, qType=qType)
+s.setFineLevel(M=10, method=fineMethod, nodes=nodesType, qType=qType)
 s.setPhiDelta(deltaMethod)
 
 algos = ['Jacobi', 'GaussSeidel']
