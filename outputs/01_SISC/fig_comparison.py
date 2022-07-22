@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from gfm.base import GFMSolver
 from gfm.util import setFig
 
-s = GFMSolver(lam=2j-0.2, u0=1, dt=0.2*np.pi, L=10)
+s = GFMSolver(lam=2j-0.2, u0=1, dt=0.25*np.pi, L=10)
 
 M = 5
 MCoarse = 3
@@ -25,7 +25,7 @@ params = [
          nodesType='LEGENDRE',
          qType='LOBATTO'),
     dict(fineMethod='RK4',
-         deltaMethod='RK2',
+         deltaMethod='TRAP',
          nodesType='EQUID',
          qType='LOBATTO')]
 

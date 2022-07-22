@@ -13,7 +13,7 @@ from gfm.util import setFig
 
 M = 1
 fineMethod = 'RK4'
-deltaMethod = 'FE'
+deltaMethod = 'BE'
 nodesType = 'EQUID'
 qType = 'RADAU-II'
 
@@ -30,7 +30,7 @@ for i, lam in enumerate(lams):
     s.setFineLevel(
         M=1, method=fineMethod, nodes=nodesType, qType=qType,
         nStepPerNode=10)
-    s.setPhiDelta(deltaMethod, nStepPerNode=5)
+    s.setPhiDelta(deltaMethod, nStepPerNode=2)
 
     t, uExact = s.getU('Exact', times=True)
     uDelta = s.getU('Delta')
@@ -60,8 +60,8 @@ for i, lam in enumerate(lams):
         gfmBnd2[i, k+1] = errEstimate2(s.L, k+1)
     # Plot
     plt.semilogy(err[i], '--', label='Iteration error')
-    plt.semilogy(delta*gfmBnd2[i], 's-', label='Original bound')
-    plt.semilogy(delta*gfmBnd[i], 'o-', label='New bound')
+    plt.semilogy(delta*gfmBnd2[i], '^-', label='Original bound')
+    plt.semilogy(delta*gfmBnd[i], 'o-', label='GFM bound')
     if i < 2:
         plt.semilogy([delta*gamma**k for k in range(nIter+1)], ':',
                       label='Norm of iteration matrix')
