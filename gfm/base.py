@@ -72,7 +72,7 @@ class GFMSolver(object):
 
     def setFineLevel(self, M, method, **kwargs):
         # Build phi and chi operators
-        self.phi, self.chi, self.nodes, self.form = getTransmissionOperators(
+        self.phi, self.chi, self.nodes, self.form = getBlockOperators(
             self.lam*self.dt, M, method, **kwargs)
         self.method = method
         # Build first component of the global system right hand side
@@ -83,7 +83,7 @@ class GFMSolver(object):
 
     def setPhiDelta(self, method, **kwargs):
         # Build phiDelta
-        self.phiDelta = getTransmissionOperators(
+        self.phiDelta = getBlockOperators(
             self.lam*self.dt, self.M, method,
             nodes=self.nodes, form=self.form, **kwargs)[0]
         # Store used method
@@ -94,7 +94,7 @@ class GFMSolver(object):
     def setCoarseLevel(self, M, **kwargs):
         # Build phi and chi operators for coarse level
         self.phiCoarse, self.chiCoarse, self.nodesCoarse = \
-            getTransmissionOperators(
+            getBlockOperators(
             self.lam*self.dt, M, self.method, form=self.form, **kwargs)[:3]
         # Build transfer operators
         self.TFtoC, self.TCtoF = getTransferOperators(
@@ -106,7 +106,7 @@ class GFMSolver(object):
 
     def setPhiDeltaCoarse(self, method, **kwargs):
         # Build phiDelta on coarse level
-        self.phiDeltaCoarse = getTransmissionOperators(
+        self.phiDeltaCoarse = getBlockOperators(
             self.lam*self.dt, self.MCoarse, method,
             nodes=self.nodesCoarse, form=self.form, **kwargs)[0]
         # Store used method
@@ -531,7 +531,12 @@ class GFMSolver(object):
 
 
 
-def getTransmissionOperators(lamDt, M, method, form=None, **kwargs):
+def getBlockOperators(lamDt, M, method, form=None, **kwargs):
+
+    # Reduce M for collocation with exact end-point prolongation
+    exactProlong = kwargs.get('exactProlong', False)
+    if exactProlong and method == 'COLLOCATION':
+        M -= 1
 
     # Set nodes and associated polynomial approximation
     nodes = kwargs.get('nodes',
@@ -594,8 +599,20 @@ def getTransmissionOperators(lamDt, M, method, form=None, **kwargs):
         # Default zero-to-node formulation
         polyApprox = LagrangeApproximation(nodes)
         Q = polyApprox.getIntegrationMatrix([(0, tau) for tau in nodes])
-        phi = np.eye(M) - lamDt*Q
-        chi = polyApprox.getInterpolationMatrix([1]).repeat(M, axis=0)
+
+        if exactProlong:
+            # Using exact prolongation
+            nodes = np.array(nodes.tolist()+[1])
+            weights = polyApprox.getIntegrationMatrix([(0, 1)]).ravel()
+            phi = np.zeros((M+1, M+1))*lamDt
+            phi[:-1, :-1] = np.eye(M) - lamDt*Q
+            phi[-1, :-1] = -lamDt*weights
+            phi[-1, -1] = 1
+            chi = np.zeros((M+1, M+1))
+            chi[:, -1] = 1
+        else:
+            phi = np.eye(M) - lamDt*Q
+            chi = polyApprox.getInterpolationMatrix([1]).repeat(M, axis=0)
 
         # Eventually switch to node-to-node formulation
         if form == 'N2N':
