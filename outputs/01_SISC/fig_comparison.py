@@ -29,11 +29,11 @@ params = [
          nodesType='EQUID',
          qType='LOBATTO')]
 
-algos = ['Jacobi', 'GaussSeidel', 'Parareal',
+algos = ['JacobiExact', 'Jacobi', 'GaussSeidel', 'Parareal',
          'STMG', 'ATMG', 'TFASST', 'PFASST']
-labels = ['ABJ', 'ABGS', 'Parareal',
+labels = ['BJ ($\\omega=1$)', 'ABJ', 'ABGS', 'Parareal',
           'TMG ($\\omega=1$)', 'TMG$_c$', 'TMG$_f$', 'PFASST']
-symbols = ['p', 's', '>', 'o', '^', '+', '<']
+symbols = ['*', 'p', 's', '>', 'o', '^', '+', '<']
 
 iFig = 1
 for param in params:

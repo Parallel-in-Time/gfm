@@ -333,6 +333,14 @@ class GFMSolver(object):
                 uPrev = u[l].copy()
                 u[l] += np.linalg.solve(phiDelta, rhs)
 
+        elif algo == 'JacobiExact':
+
+            uPrev = f0
+            for l in range(L):
+                rhs = chi @ uPrev
+                uPrev = u[l].copy()
+                u[l] = np.linalg.solve(phi, rhs)
+
         elif algo == 'Parareal':
 
             uk = f0
