@@ -50,6 +50,8 @@ errEstimate = s.errBoundFunc('PFASST')
 errEstimateI = s.errBoundFunc('PFASST', iOnly=True)
 R, _ = s.iterationMatrix('PFASST')
 gamma = np.linalg.norm(R, ord=np.inf)
+eigs = np.linalg.eigvals(R)
+rho = np.max(np.abs(eigs))
 
 # Iterations
 for k in range(nIter):
@@ -65,6 +67,8 @@ plt.semilogy(delta*err, 'o--', label='Iteration error')
 plt.semilogy(delta*gfmBnd, '-', label='GFM bound', c=getLastPlotCol())
 plt.semilogy([delta*gamma**k for k in range(nIter+1)],
              ':', label='Iteration matrix', c=getLastPlotCol())
+plt.semilogy([delta*rho**k for k in range(nIter+1)],
+             '-.', label='Spectral radius', c=getLastPlotCol())
 # Plot interface error
 plt.figure(figI)
 plt.semilogy(deltaI*errI, 'o--', label='Iteration error')
