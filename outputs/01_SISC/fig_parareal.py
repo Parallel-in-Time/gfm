@@ -12,28 +12,40 @@ from gfm.base import GFMSolver
 from gfm.util import setFig
 
 M = 1
-fineMethod = 'RK4'
+fineMethod = 'BE'
 deltaMethod = 'BE'
 nodesType = 'EQUID'
 qType = 'RADAU-II'
 
-lams = [1j, -1, 4j, -4]
+lams = [1j]
 nIter = 10
 
 err = np.zeros((len(lams), nIter+1))
 gfmBnd = np.ones((len(lams), nIter+1))
 gfmBnd2 = np.ones((len(lams), nIter+1))
 
+nPtsPerWavelength = 256
+plotSol = True
+
+nPtsCoarse = int(round(nPtsPerWavelength/4))
+
 for i, lam in enumerate(lams):
 
-    s = GFMSolver(lam, u0=1, dt=0.2*np.pi, L=10)
+    s = GFMSolver(lam, u0=1, dt=2.0*np.pi, L=10)
     s.setFineLevel(
-        M=1, method=fineMethod, nodes=nodesType, qType=qType,
-        nStepPerNode=10)
-    s.setPhiDelta(deltaMethod, nStepPerNode=2)
+        M=nPtsPerWavelength if plotSol else 1,
+        method=fineMethod, nodes=nodesType, qType=qType,
+        nStepPerNode=1 if plotSol else nPtsPerWavelength)
+    s.setPhiDelta(
+        deltaMethod, nStepPerNode=nPtsCoarse)
+    if plotSol:
+        s.setCoarseLevel(M=nPtsCoarse, qType=qType)
+        s.setPhiDeltaCoarse(deltaMethod)
 
     t, uExact = s.getU('Exact', times=True)
     uDelta = s.getU('Delta')
+    if plotSol:
+        tCoarse, uCoarse = s.getU('DeltaCoarse', times=True)
     uFine = s.getU('Fine')
     errFine = np.max(np.abs(uExact-uFine))
     errCoarse = np.max(np.abs(uExact-uDelta))
@@ -52,6 +64,7 @@ for i, lam in enumerate(lams):
     gamma = np.linalg.norm(R, ord=np.inf)
 
     plt.figure()
+    plt.title(f'lam={lam}, {nPtsPerWavelength} pts per wavelength')
     # Iterations
     for k in range(nIter):
         s.iterate(algo, uAlgo)
@@ -62,10 +75,10 @@ for i, lam in enumerate(lams):
     plt.semilogy(err[i], '--', label='Iteration error')
     plt.semilogy(delta*gfmBnd2[i], '^-', label='Original bound')
     plt.semilogy(delta*gfmBnd[i], 'o-', label='GFM bound')
-    if i < 2:
+    if True:
         plt.semilogy([delta*gamma**k for k in range(nIter+1)], ':',
                       label='Norm of iteration matrix')
-        plt.ylim(1e-13, 10)
+        plt.ylim(1e-5, 1e3)
     if i == 2:
         plt.ylim(1e-2, 1e4)
         # textArgs = dict(
@@ -79,3 +92,13 @@ for i, lam in enumerate(lams):
     #            colors='gray', linestyles='--', linewidth=1.5)
     setFig('Iteration', 'Error vs. fine solution',
            fileName=f'fig_Parareal_{i}.pdf')
+
+    if plotSol:
+        plt.close()
+        plt.figure()
+        plt.title(f'lam={lam}, {nPtsPerWavelength} pts per wavelength')
+        plt.plot(t, uFine.real, '-', label='fine')
+        plt.plot(tCoarse, uCoarse.real, '-', label='coarse')
+        plt.legend(loc='upper right')
+        plt.xlabel('time')
+        plt.tight_layout()

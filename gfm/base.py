@@ -110,7 +110,7 @@ class GFMSolver(object):
             self.lam*self.dt, self.MCoarse, method,
             nodes=self.nodesCoarse, form=self.form, **kwargs)[0]
         # Store used method
-        self.methodDelta = method
+        self.methodDeltaCoarse = method
         # Reset solution storage variables
         self._uDeltaCoarse = None
 
@@ -239,7 +239,7 @@ class GFMSolver(object):
             if 'Coarse' in name:
                 M = self.MCoarse
                 chi = self.chiCoarse
-                rhs0 = self.TFtoC @ self.chi @ self.f0
+                rhs0 = chi @ self.TFtoC @ self.f0
             else:
                 M = self.M
                 chi = self.chi
