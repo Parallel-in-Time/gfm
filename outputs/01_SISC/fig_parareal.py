@@ -24,11 +24,11 @@ gfmBnd2 = np.ones((len(lams), nIter+1))
 nPtsPerWavelength = 10
 plotSol = False
 
-nPtsCoarse = int(round(nPtsPerWavelength/2))
+nPtsCoarse = int(round(nPtsPerWavelength/5))
 
 for i, lam in enumerate(lams):
 
-    s = GFMSolver(lam, u0=1, dt=0.1*np.pi, L=10)
+    s = GFMSolver(lam, u0=1, dt=0.2*np.pi, L=10)
     s.setFineLevel(
         M=nPtsPerWavelength if plotSol else 1,
         method=fineMethod, nodes=nodesType, qType=qType,
@@ -61,7 +61,7 @@ for i, lam in enumerate(lams):
     gamma = np.linalg.norm(R, ord=np.inf)
 
     plt.figure()
-    plt.title(f'lam={lam}, {nPtsPerWavelength} pts per wavelength')
+    # plt.title(f'lam={lam}, {nPtsPerWavelength} pts per wavelength')
     # Iterations
     for k in range(nIter):
         s.iterate(algo, uAlgo)
