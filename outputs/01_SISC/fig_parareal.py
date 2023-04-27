@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jan  6 18:54:13 2022
-
-@author: telu
+Generate Figure 3 and 4
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,27 +9,26 @@ import matplotlib.pyplot as plt
 from gfm.base import GFMSolver
 from gfm.util import setFig
 
-M = 1
-fineMethod = 'BE'
+fineMethod = 'RK4'
 deltaMethod = 'BE'
 nodesType = 'EQUID'
 qType = 'RADAU-II'
 
-lams = [1j]
+lams = [1j, -1, 4j, -4]
 nIter = 10
 
 err = np.zeros((len(lams), nIter+1))
 gfmBnd = np.ones((len(lams), nIter+1))
 gfmBnd2 = np.ones((len(lams), nIter+1))
 
-nPtsPerWavelength = 256
-plotSol = True
+nPtsPerWavelength = 10
+plotSol = False
 
-nPtsCoarse = int(round(nPtsPerWavelength/4))
+nPtsCoarse = int(round(nPtsPerWavelength/2))
 
 for i, lam in enumerate(lams):
 
-    s = GFMSolver(lam, u0=1, dt=2.0*np.pi, L=10)
+    s = GFMSolver(lam, u0=1, dt=0.1*np.pi, L=10)
     s.setFineLevel(
         M=nPtsPerWavelength if plotSol else 1,
         method=fineMethod, nodes=nodesType, qType=qType,
@@ -78,7 +75,6 @@ for i, lam in enumerate(lams):
     if True:
         plt.semilogy([delta*gamma**k for k in range(nIter+1)], ':',
                       label='Norm of iteration matrix')
-        plt.ylim(1e-5, 1e3)
     if i == 2:
         plt.ylim(1e-2, 1e4)
         # textArgs = dict(
@@ -86,7 +82,7 @@ for i, lam in enumerate(lams):
         #               ec=(0.5, 0.5, 0.5),
         #               fc=(0.8, 0.8, 0.8)))
         # plt.text(0, 0.02, 'Max. abs. err. fine: $8.35e^{-4}$', **textArgs)
-    if i == 3:
+    else:
         plt.ylim(1e-13, 10)
     # plt.hlines([errFine, errCoarse], 0, nIter,
     #            colors='gray', linestyles='--', linewidth=1.5)

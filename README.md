@@ -1,16 +1,28 @@
-## Code repository for the Generating Function Method
+# Code repository for the Generating Function Method
 
 This repository contains a python code library and scripts implemented for the development of the Generating Function Method (GFM),
 which intends to describe and analyze the main current iterative PinT algorithms within a common framework (Parareal, MGRIT, PFASST, STMG, ...).
 
-It currently depends on classical python packages like [Numpy](https://numpy.org/) and [Matplotlib](https://matplotlib.org/),
+It is associated to the following publication :
+
+> _Gander, M. J., Lunet, T., Ruprecht, D., & Speck, R. (2023). [Gander, M. J., Lunet, T., Ruprecht, D., & Speck, R. (2022). A Unified Analysis Framework for Iterative Parallel-in-Time Algorithms](https://arxiv.org/pdf/2203.16069.pdf). To appear in SIAM Journal of Scientific Computing._
+
+Scripts used to generate the figures in the paper below are available in the [outputs](./outputs/README.md) folder.
+
+# How to run the code
+
+> :mega: Instructions are given for Unix-based system (Linux, MacOSX, ...). Sadly, Windows systems are not supported (and will probably never ... but you can still use [WSL](https://learn.microsoft.com/de-de/windows/wsl/install) on Windows to emulate a Ubuntu system and then use the instructions below).
+
+The library currently depends on classical python packages like [Numpy](https://numpy.org/) and [Matplotlib](https://matplotlib.org/),
 plus an external package for the generation of quadrature nodes for collocation methods, [Pythag](https://gitlab.com/tlunet/pythag).
 More informations on how Pythag can be installed and used [here](./doku/pythag.md).
+
+Additionally, figures are cropped using `pdfcrop`, which should be installed prior on your system.
 
 If you have any issue with running the code, 
 don't hesitate to open an [issue](https://github.com/Parallel-in-Time/gfm/issues) in the Github interface. 
 
-### Repository structure
+## Repository structure
 
 - [doku](./doku) : Markdown documentation pages.
 - [gfm](./gfm) : Python library for the gfm package.
@@ -18,7 +30,7 @@ don't hesitate to open an [issue](https://github.com/Parallel-in-Time/gfm/issues
 - [outputs](./outputs) : scripts to reproduce the figures of a manuscript on the GFM method (in preparation).
 - [tutorials](./tutorials) : Jupyter notebooks with example and tutorials on how to use the gfm library.
 
-### Acknowledgements
+## Acknowledgements
 
 This repository results from a collaboration between Jülich Supercomputing Centre 
 ([Robert SPECK](https://www.fz-juelich.de/SharedDocs/Personen/IAS/JSC/EN/staff/speck_r.html)), 

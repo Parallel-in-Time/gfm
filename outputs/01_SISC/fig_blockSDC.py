@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan  7 15:27:24 2022
-
-@author: telu
+Generate Figure 7
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,7 +9,7 @@ import matplotlib.pyplot as plt
 from gfm.base import GFMSolver
 from gfm.util import setFig, getLastPlotCol
 
-s = GFMSolver(lam=1j, u0=1, dt=0.01*np.pi, L=100)
+s = GFMSolver(lam=1j, u0=1, dt=0.1*np.pi, L=10)
 
 fineMethod = 'COLLOCATION'
 deltaMethod = 'BE'

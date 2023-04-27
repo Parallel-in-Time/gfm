@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan 11 10:44:29 2022
-
-@author: telu
+Generate Figure 9
 """
 import numpy as np
 import matplotlib.pyplot as plt

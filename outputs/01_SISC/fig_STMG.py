@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan 11 09:55:06 2022
-
-@author: telu
+Additional figures for numerical experiments with (S)TMG
 """
 import numpy as np
 import matplotlib.pyplot as plt
